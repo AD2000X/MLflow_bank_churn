@@ -6,7 +6,7 @@ A machine learning project for predicting bank customer churn using Logistic Reg
 ## Screenshots
 
 ### MLflow Home Page
-![MLflow Home Page](screenshots/MLflow_home_page.png)
+![MLflow Home Page](screenshots/MLflow_homepage.png)
 *MLflow tracking interface showing the Bank Churn Prediction experiment*
 
 ### Model Comparison
@@ -118,13 +118,8 @@ Edit \`config/config.yaml\` to customize:
 
 ## Project Workflow
 
-\`\`\`mermaid
-graph LR
-    A[Data Download] --> B[Preprocessing]
-    B --> C[Model Training]
-    C --> D[MLflow Logging]
-    D --> E[Model Comparison]
-    E --> F[Model Registry]
+\`\`\`
+Data Download → Preprocessing → Model Training → MLflow Logging → Model Comparison → Model Registry
 \`\`\`
 
 ## Repository Contents
@@ -244,7 +239,7 @@ black src/ scripts/
 
 \`\`\`bash
 # Windows
-Get-Process | Where-Object {$_.ProcessName -like "*mlflow*"} | Stop-Process -Force
+Get-Process | Where-Object {\`$_.ProcessName -like "*mlflow*"} | Stop-Process -Force
 
 # Linux/Mac
 pkill -f mlflow
