@@ -1,5 +1,4 @@
-﻿@"
-# Bank Customer Churn Prediction with MLflow
+﻿# Bank Customer Churn Prediction with MLflow
 
 A machine learning project for predicting bank customer churn using Logistic Regression and Random Forest models, with experiment tracking via MLflow.
 
@@ -24,7 +23,7 @@ A machine learning project for predicting bank customer churn using Logistic Reg
 
 ## Project Structure
 
-\`\`\`
+\\\
 bank-churn-mlflow/
 ├── src/              # Source code modules
 ├── scripts/          # Executable scripts
@@ -32,7 +31,7 @@ bank-churn-mlflow/
 ├── screenshots/      # MLflow UI screenshots
 ├── notebooks/        # Jupyter notebooks for analysis
 └── tests/            # Unit tests
-\`\`\`
+\\\
 
 ## Prerequisites
 
@@ -43,14 +42,14 @@ bank-churn-mlflow/
 
 ### 1. Clone the repository
 
-\`\`\`bash
+\\\ash
 git clone https://github.com/AD2000X/MLflow_bank_churn.git
 cd MLflow_bank_churn
-\`\`\`
+\\\
 
 ### 2. Create virtual environment
 
-\`\`\`bash
+\\\ash
 python -m venv venv
 
 # On Windows
@@ -58,20 +57,20 @@ python -m venv venv
 
 # On Linux/Mac
 source venv/bin/activate
-\`\`\`
+\\\
 
 ### 3. Install dependencies
 
-\`\`\`bash
+\\\ash
 pip install -r requirements.txt
-\`\`\`
+\\\
 
 ### 4. Set up Kaggle API
 
-- Download your \`kaggle.json\` from https://www.kaggle.com/settings
+- Download your \kaggle.json\ from https://www.kaggle.com/settings
 - Place it in:
-  - Windows: \`C:\Users\<username>\.kaggle\kaggle.json\`
-  - Linux/Mac: \`~/.kaggle/kaggle.json\`
+  - Windows: \C:\Users\<username>\.kaggle\kaggle.json\
+  - Linux/Mac: \~/.kaggle/kaggle.json\
 
 ## Usage
 
@@ -79,9 +78,9 @@ pip install -r requirements.txt
 
 Run the complete training pipeline:
 
-\`\`\`bash
+\\\ash
 python scripts/train.py
-\`\`\`
+\\\
 
 This will:
 1. Download the dataset from Kaggle
@@ -96,13 +95,13 @@ The MLflow UI will automatically start at http://localhost:5000
 
 Alternatively, you can manually start it:
 
-\`\`\`bash
+\\\ash
 mlflow ui --port 5000
-\`\`\`
+\\\
 
 ### Configuration
 
-Edit \`config/config.yaml\` to customize:
+Edit \config/config.yaml\ to customize:
 - Model hyperparameters
 - Train/test split ratio
 - MLflow server settings
@@ -118,23 +117,23 @@ Edit \`config/config.yaml\` to customize:
 
 ## Project Workflow
 
-\`\`\`
+\\\
 Data Download → Preprocessing → Model Training → MLflow Logging → Model Comparison → Model Registry
-\`\`\`
+\\\
 
 ## Repository Contents
 
 ### Source Code
-- \`src/data_loader.py\` - Kaggle dataset download and CSV loading
-- \`src/preprocessor.py\` - Data cleaning and feature engineering
-- \`src/model_trainer.py\` - Model training and evaluation
-- \`src/mlflow_server.py\` - MLflow server lifecycle management
+- \src/data_loader.py\ - Kaggle dataset download and CSV loading
+- \src/preprocessor.py\ - Data cleaning and feature engineering
+- \src/model_trainer.py\ - Model training and evaluation
+- \src/mlflow_server.py\ - MLflow server lifecycle management
 
 ### Scripts
-- \`scripts/train.py\` - Main training pipeline
+- \scripts/train.py\ - Main training pipeline
 
 ### Configuration
-- \`config/config.yaml\` - Centralized configuration for models and MLflow
+- \config/config.yaml\ - Centralized configuration for models and MLflow
 
 ## MLflow Tracking
 
@@ -149,14 +148,15 @@ All experiments are logged to MLflow with:
 
 - **Experiment Name**: Bank Churn Prediction
 - **Runs**:
-  - \`logistic-regression-baseline\` - Baseline model
-  - \`random-forest-model\` - Advanced ensemble model
+  - \logistic-regression-baseline\ - Baseline model
+  - \
+andom-forest-model\ - Advanced ensemble model
 
 ### Model Registry
 
 Both models are registered in MLflow Model Registry:
-- \`BankChurnLogisticRegression\`
-- \`BankChurnRandomForest\`
+- \BankChurnLogisticRegression\
+- \BankChurnRandomForest\
 
 ## Key Features Explained
 
@@ -184,7 +184,7 @@ Both models are registered in MLflow Model Registry:
 
 ## Project Architecture
 
-\`\`\`
+\\\
 ┌─────────────────┐
 │  Data Loader    │ ← Kaggle API
 └────────┬────────┘
@@ -203,47 +203,47 @@ Both models are registered in MLflow Model Registry:
 ┌─────────────────┐
 │ MLflow Server   │ → UI (Port 5000)
 └─────────────────┘
-\`\`\`
+\\\
 
 ## Development
 
 ### Running Tests
 
-\`\`\`bash
+\\\ash
 # Run all tests
 pytest tests/
 
 # Run specific test
 pytest tests/test_preprocessor.py
-\`\`\`
+\\\
 
 ### Code Style
 
 This project follows PEP 8 style guidelines.
 
-\`\`\`bash
+\\\ash
 # Check code style
 flake8 src/ scripts/
 
 # Format code
 black src/ scripts/
-\`\`\`
+\\\
 
 ## Troubleshooting
 
 ### Issue: Kaggle API Authentication Failed
-**Solution**: Ensure \`kaggle.json\` is in the correct location with proper permissions.
+**Solution**: Ensure \kaggle.json\ is in the correct location with proper permissions.
 
 ### Issue: MLflow Server Won't Start
 **Solution**: Check if port 5000 is already in use. Kill existing MLflow processes:
 
-\`\`\`bash
+\\\ash
 # Windows
-Get-Process | Where-Object {\`$_.ProcessName -like "*mlflow*"} | Stop-Process -Force
+Get-Process | Where-Object {\$_.ProcessName -like "*mlflow*"} | Stop-Process -Force
 
 # Linux/Mac
 pkill -f mlflow
-\`\`\`
+\\\
 
 ### Issue: Module Not Found
 **Solution**: Ensure virtual environment is activated and all dependencies are installed.
@@ -262,9 +262,9 @@ pkill -f mlflow
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository
-2. Create a feature branch (\`git checkout -b feature/AmazingFeature\`)
-3. Commit your changes (\`git commit -m 'Add some AmazingFeature'\`)
-4. Push to the branch (\`git push origin feature/AmazingFeature\`)
+2. Create a feature branch (\git checkout -b feature/AmazingFeature\)
+3. Commit your changes (\git commit -m 'Add some AmazingFeature'\)
+4. Push to the branch (\git push origin feature/AmazingFeature\)
 5. Open a Pull Request
 
 ## License
@@ -285,4 +285,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-"@ | Out-File -FilePath README.md -Encoding UTF8 -NoNewline
+⭐ If you find this project helpful, please consider giving it a star!
