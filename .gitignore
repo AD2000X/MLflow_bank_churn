@@ -75,4 +75,45 @@ logs/
 *.db
 *.sqlite
 *.sqlite3
-"@ | Out-File -FilePath .gitignore -Encoding UTF8 -NoNewline
+"@ | Out-File -FilePath .gitignore -Encoding UTF8 -NoNewline# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# MLflow
+mlruns/
+mlflow.db
+mlflow.db.lock
+
+# Models (too large for git)
+models/
+*.pkl
+*.joblib
+*.h5
+*.pth
+
+# Data (optional - depends on size)
+data/*.csv
+!data/sample.csv
+
+# Generated files
+*.log
+*.csv
+ab_test_comparison_*.csv
+batch_predictions_*.csv
+fix_scenarios.ps1
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

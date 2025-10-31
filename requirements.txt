@@ -11,3 +11,11 @@ psutil>=5.9.0
 
 # Optional: for notebook
 jupyter>=1.0.0
+
+# API and Deployment
+flask>=2.3.0
+requests>=2.31.0
+
+# Utilities
+setuptools>=65.0.0
+packaging>=21.0

@@ -1,190 +1,77 @@
 ﻿# Bank Customer Churn Prediction with MLflow
 
-A machine learning project for predicting bank customer churn using Logistic Regression and Random Forest models, with experiment tracking via MLflow.
+A complete end-to-end machine learning project for predicting bank customer churn, featuring experiment tracking with MLflow, model registry, and production-ready REST API deployment.
 
-## Screenshots
+## Table of Contents
 
-### MLflow Home Page
-![MLflow Home Page](screenshots/MLflow_homepage.png)
-*MLflow tracking interface showing the Bank Churn Prediction experiment*
+- [Overview](#overview)
+- [Features](#features)
+- [Project Architecture](#project-architecture)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Model Performance](#model-performance)
+- [API Documentation](#api-documentation)
+- [Deployment Scenarios](#deployment-scenarios)
+- [MLflow Integration](#mlflow-integration)
+- [Configuration](#configuration)
+- [Screenshots](#screenshots)
+- [Technologies Used](#technologies-used)
+- [License](#license)
 
-### Model Comparison
-![Model Comparison](screenshots/MLflow_comparing.png)
-*Parallel coordinates plot comparing Logistic Regression and Random Forest models*
+## Overview
+
+This project demonstrates a production-ready machine learning pipeline that predicts bank customer churn using classification models. It includes comprehensive MLflow integration for experiment tracking, model versioning, and multiple deployment strategies including REST API endpoints.
+
+### Key Capabilities
+
+- Automated data pipeline with Kaggle API integration
+- Multiple model comparison (Logistic Regression vs Random Forest)
+- Complete MLflow experiment tracking and model registry
+- Production-ready REST API with Flask
+- Five different deployment scenarios
+- A/B testing framework for model comparison
+- Batch prediction support
 
 ## Features
 
-- Automated data download from Kaggle
-- Data preprocessing with one-hot encoding
-- Multiple model comparison (Logistic Regression vs Random Forest)
-- MLflow experiment tracking and model registry
-- Comprehensive metrics logging
-- Interactive visualization for model comparison
-
-## Project Structure
-
-\\\
-bank-churn-mlflow/
-├── src/              # Source code modules
-├── scripts/          # Executable scripts
-├── config/           # Configuration files
-├── screenshots/      # MLflow UI screenshots
-├── notebooks/        # Jupyter notebooks for analysis
-└── tests/            # Unit tests
-\\\
-
-## Prerequisites
-
-- Python 3.8+
-- Kaggle account and API credentials
-
-## Installation
-
-### 1. Clone the repository
-
-\\\ash
-git clone https://github.com/AD2000X/MLflow_bank_churn.git
-cd MLflow_bank_churn
-\\\
-
-### 2. Create virtual environment
-
-\\\ash
-python -m venv venv
-
-# On Windows
-.\venv\Scripts\Activate.ps1
-
-# On Linux/Mac
-source venv/bin/activate
-\\\
-
-### 3. Install dependencies
-
-\\\ash
-pip install -r requirements.txt
-\\\
-
-### 4. Set up Kaggle API
-
-- Download your \kaggle.json\ from https://www.kaggle.com/settings
-- Place it in:
-  - Windows: \C:\Users\<username>\.kaggle\kaggle.json\
-  - Linux/Mac: \~/.kaggle/kaggle.json\
-
-## Usage
-
-### Quick Start
-
-Run the complete training pipeline:
-
-\\\ash
-python scripts/train.py
-\\\
-
-This will:
-1. Download the dataset from Kaggle
-2. Preprocess the data
-3. Train both Logistic Regression and Random Forest models
-4. Log all experiments to MLflow
-5. Start the MLflow UI server
-
-### View MLflow UI
-
-The MLflow UI will automatically start at http://localhost:5000
-
-Alternatively, you can manually start it:
-
-\\\ash
-mlflow ui --port 5000
-\\\
-
-### Configuration
-
-Edit \config/config.yaml\ to customize:
-- Model hyperparameters
-- Train/test split ratio
-- MLflow server settings
-
-## Model Performance
-
-| Model | Accuracy | Precision | Recall | F1 Score |
-|-------|----------|-----------|--------|----------|
-| Logistic Regression | 0.8125 | 0.6923 | 0.3571 | 0.4762 |
-| Random Forest | 0.8594 | 0.7805 | 0.5357 | 0.6349 |
-
-**Winner: Random Forest** - Shows 4.69% improvement in accuracy and 33.34% improvement in F1 score compared to Logistic Regression.
-
-## Project Workflow
-
-\\\
-Data Download → Preprocessing → Model Training → MLflow Logging → Model Comparison → Model Registry
-\\\
-
-## Repository Contents
-
-### Source Code
-- \src/data_loader.py\ - Kaggle dataset download and CSV loading
-- \src/preprocessor.py\ - Data cleaning and feature engineering
-- \src/model_trainer.py\ - Model training and evaluation
-- \src/mlflow_server.py\ - MLflow server lifecycle management
-
-### Scripts
-- \scripts/train.py\ - Main training pipeline
-
-### Configuration
-- \config/config.yaml\ - Centralized configuration for models and MLflow
-
-## MLflow Tracking
-
-All experiments are logged to MLflow with:
-
-- **Parameters**: Hyperparameters, data split ratio, random seeds
-- **Metrics**: Accuracy, precision, recall, F1 score
-- **Models**: Serialized sklearn models with signatures
-- **Artifacts**: Model requirements, environment specifications
-
-### Experiment Organization
-
-- **Experiment Name**: Bank Churn Prediction
-- **Runs**:
-  - \logistic-regression-baseline\ - Baseline model
-  - \
-andom-forest-model\ - Advanced ensemble model
-
-### Model Registry
-
-Both models are registered in MLflow Model Registry:
-- \BankChurnLogisticRegression\
-- \BankChurnRandomForest\
-
-## Key Features Explained
-
-### 1. Data Preprocessing
-- Removes unnecessary columns (id, CustomerId, Surname)
-- Handles missing values
+### Data Processing
+- Automated dataset download from Kaggle
+- Comprehensive data preprocessing pipeline
 - One-hot encoding for categorical variables
 - Stratified train-test split (80/20)
+- Missing value handling
 
-### 2. Model Training
-- **Logistic Regression**: Simple baseline with max_iter=1000
-- **Random Forest**: 100 estimators with max_depth=10
+### Model Training
+- Logistic Regression baseline model
+- Random Forest ensemble model
+- Hyperparameter tracking
+- Cross-validation support
+- Comprehensive metrics logging
 
-### 3. MLflow Integration
-- Automatic experiment tracking
-- Parameter and metric logging
-- Model versioning and registry
-- Artifact storage (model files, requirements)
+### MLflow Integration
+- Experiment tracking with parameters and metrics
+- Model registry with version management
+- Artifact storage (models, requirements, configurations)
+- Model comparison visualization
+- Automatic model logging with signatures
 
-### 4. Visualization
-- Parallel coordinates plot for parameter comparison
-- Scatter plot for metric relationships
-- Box plot for metric distribution
-- Contour plot for parameter interactions
+### API Deployment
+- REST API with Flask
+- Single and batch prediction endpoints
+- Health check and model information endpoints
+- Dynamic model reloading
+- Error handling and validation
+
+### Deployment Scenarios
+1. Simple deployment with direct prediction
+2. Flask API with auto-reload capability
+3. Batch prediction for large datasets
+4. A/B testing between different models
+5. Model version comparison and analysis
 
 ## Project Architecture
-
-\\\
+```
 ┌─────────────────┐
 │  Data Loader    │ ← Kaggle API
 └────────┬────────┘
@@ -201,70 +88,491 @@ Both models are registered in MLflow Model Registry:
          │
          ▼
 ┌─────────────────┐
-│ MLflow Server   │ → UI (Port 5000)
+│ MLflow Server   │ → Tracking UI (Port 5000)
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  REST API       │ → Prediction API (Port 5001)
 └─────────────────┘
-\\\
+```
 
-## Development
+## Installation
 
-### Running Tests
+### Prerequisites
 
-\\\ash
-# Run all tests
+- Python 3.8 or higher
+- Kaggle account and API credentials
+- Git
+
+### Setup Instructions
+
+#### 1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/MLflow_bank_churn.git
+cd MLflow_bank_churn
+```
+
+#### 2. Create virtual environment
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+.\venv\Scripts\Activate.ps1
+
+# On Linux/Mac:
+source venv/bin/activate
+```
+
+#### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Configure Kaggle API
+
+Download your `kaggle.json` from https://www.kaggle.com/settings and place it in:
+- Windows: `C:\Users\<username>\.kaggle\kaggle.json`
+- Linux/Mac: `~/.kaggle/kaggle.json`
+
+Ensure proper permissions (Linux/Mac):
+```bash
+chmod 600 ~/.kaggle/kaggle.json
+```
+
+## Quick Start
+
+### Training Models
+
+#### Option 1: Using the main training script
+```bash
+python bank_churn.py
+```
+
+This will:
+1. Download the dataset from Kaggle
+2. Preprocess the data
+3. Train both Logistic Regression and Random Forest models
+4. Log all experiments to MLflow
+5. Register models in the Model Registry
+
+#### Option 2: Using the modular training script
+```bash
+python scripts/train.py
+```
+
+### Starting Services
+
+#### 1. Start MLflow Tracking Server
+```bash
+mlflow server --host 127.0.0.1 --port 5000
+```
+
+Access the MLflow UI at: http://localhost:5000
+
+#### 2. Start REST API Server
+```bash
+python scripts/api_server.py
+```
+
+API will be available at: http://localhost:5001
+
+#### 3. Run Deployment Scenarios
+```bash
+python scripts/model_deployment_scenarios.py
+```
+
+This demonstrates all five deployment scenarios with interactive prompts.
+
+## Project Structure
+```
+MLflow_bank_churn/
+├── bank_churn.py                  # Main training script
+├── requirements.txt               # Python dependencies
+├── README.md                      # Project documentation
+├── .gitignore                     # Git ignore rules
+├── config/
+│   └── config.yaml               # Configuration file
+├── src/
+│   ├── data_loader.py            # Kaggle data download
+│   ├── preprocessor.py           # Data preprocessing
+│   ├── model_trainer.py          # Model training logic
+│   └── mlflow_server.py          # MLflow server management
+├── scripts/
+│   ├── train.py                  # Modular training pipeline
+│   ├── api_server.py             # REST API server
+│   └── model_deployment_scenarios.py  # Deployment examples
+├── screenshots/
+│   ├── MLflow_homepage.png      # MLflow UI home
+│   └── MLflow_comparing.png      # Model comparison
+├── notebooks/                     # Jupyter notebooks
+└── tests/                         # Unit tests
+```
+
+## Model Performance
+
+### Comparison Results
+
+| Model | Accuracy | Precision | Recall | F1 Score |
+|-------|----------|-----------|--------|----------|
+| Logistic Regression | 83.36% | 68.98% | 38.79% | 49.66% |
+| Random Forest | 86.30% | 76.19% | 51.27% | 61.30% |
+
+### Key Findings
+
+- **Random Forest** shows 2.94% improvement in accuracy over Logistic Regression
+- **Random Forest** demonstrates 23.43% improvement in F1 score
+- Random Forest achieves better precision (76.19% vs 68.98%)
+- Random Forest shows superior recall (51.27% vs 38.79%)
+
+**Recommended Model**: Random Forest for production deployment
+
+### Feature Importance (Random Forest)
+
+Top predictive features:
+1. Age
+2. Number of Products
+3. Balance
+4. Credit Score
+5. Estimated Salary
+
+## API Documentation
+
+### Base URL
+```
+http://localhost:5001
+```
+
+### Endpoints
+
+#### Health Check
+```http
+GET /
+```
+
+**Response:**
+```json
+{
+  "status": "running",
+  "message": "Bank Churn Prediction API",
+  "model": {
+    "name": "BankChurnRandomForest",
+    "version": "8",
+    "stage": "None",
+    "loaded_at": "2025-10-31T03:19:36.306325"
+  }
+}
+```
+
+#### Model Information
+```http
+GET /model-info
+```
+
+**Response:**
+```json
+{
+  "version": "8",
+  "stage": "None",
+  "run_id": "114577e72dd44007b804b66112834599",
+  "model_uri": "models:/BankChurnRandomForest/8"
+}
+```
+
+#### Single Prediction
+```http
+POST /predict
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+  "CreditScore": 750.0,
+  "Age": 45.0,
+  "Tenure": 10.0,
+  "Balance": 100000.0,
+  "NumOfProducts": 3.0,
+  "HasCrCard": 1.0,
+  "IsActiveMember": 1.0,
+  "EstimatedSalary": 90000.0,
+  "Geography_Germany": 0.0,
+  "Geography_Spain": 0.0,
+  "Gender_Male": 1.0
+}
+```
+
+**Response:**
+```json
+{
+  "prediction": 0,
+  "prediction_label": "WILL STAY",
+  "model_version": "8",
+  "confidence": "Model provides binary classification without probability",
+  "timestamp": "2025-10-31T03:39:34.099669"
+}
+```
+
+#### Batch Prediction
+```http
+POST /batch-predict
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+[
+  {
+    "CreditScore": 750.0,
+    "Age": 45.0,
+    ...
+  },
+  {
+    "CreditScore": 400.0,
+    "Age": 25.0,
+    ...
+  }
+]
+```
+
+#### Reload Model
+```http
+POST /reload-model
+```
+
+Reloads the latest model version without server restart.
+
+### Example Usage
+
+#### Python
+```python
+import requests
+
+# Single prediction
+data = {
+    "CreditScore": 750.0,
+    "Age": 45.0,
+    "Tenure": 10.0,
+    "Balance": 100000.0,
+    "NumOfProducts": 3.0,
+    "HasCrCard": 1.0,
+    "IsActiveMember": 1.0,
+    "EstimatedSalary": 90000.0,
+    "Geography_Germany": 0.0,
+    "Geography_Spain": 0.0,
+    "Gender_Male": 1.0
+}
+
+response = requests.post(
+    "http://localhost:5001/predict",
+    json=data
+)
+
+print(response.json())
+```
+
+#### cURL
+```bash
+curl -X POST http://localhost:5001/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "CreditScore": 750.0,
+    "Age": 45.0,
+    "Tenure": 10.0,
+    "Balance": 100000.0,
+    "NumOfProducts": 3.0,
+    "HasCrCard": 1.0,
+    "IsActiveMember": 1.0,
+    "EstimatedSalary": 90000.0,
+    "Geography_Germany": 0.0,
+    "Geography_Spain": 0.0,
+    "Gender_Male": 1.0
+  }'
+```
+
+## Deployment Scenarios
+
+The project includes five comprehensive deployment scenarios:
+
+### Scenario 1: Simple Deployment
+
+Direct model loading and prediction for quick testing and development.
+```python
+from scripts.model_deployment_scenarios import scenario_1_simple_deployment
+scenario_1_simple_deployment()
+```
+
+### Scenario 2: Flask API with Auto-Reload
+
+Production-ready API server with dynamic model reloading capability.
+```python
+from scripts.model_deployment_scenarios import scenario_2_flask_api
+app = scenario_2_flask_api()
+app.run(host='0.0.0.0', port=5001)
+```
+
+### Scenario 3: Batch Prediction
+
+Efficient processing of large customer datasets with CSV output.
+```python
+from scripts.model_deployment_scenarios import scenario_3_batch_prediction
+results = scenario_3_batch_prediction()
+```
+
+### Scenario 4: A/B Testing
+
+Compare predictions between different models to evaluate business impact.
+```python
+from scripts.model_deployment_scenarios import scenario_4_ab_testing
+comparison = scenario_4_ab_testing()
+```
+
+### Scenario 5: Version Comparison
+
+Analyze differences between model versions to track improvement over time.
+```python
+from scripts.model_deployment_scenarios import scenario_5_version_comparison
+scenario_5_version_comparison()
+```
+
+## MLflow Integration
+
+### Experiment Tracking
+
+All training runs are logged to MLflow with:
+
+- **Parameters**: Model hyperparameters, data split ratios, random seeds
+- **Metrics**: Accuracy, precision, recall, F1 score
+- **Artifacts**: Trained models, requirements.txt, environment specifications
+- **Tags**: Model type, dataset version, training date
+
+### Model Registry
+
+Models are registered with versioning:
+
+- **Model Names**:
+  - `BankChurnLogisticRegression`
+  - `BankChurnRandomForest`
+- **Versioning**: Automatic version incrementation
+- **Staging**: Support for None, Staging, Production, Archived stages
+- **Model Signatures**: Input/output schema validation
+
+### Accessing MLflow UI
+```bash
+mlflow server --host 127.0.0.1 --port 5000
+```
+
+Navigate to http://localhost:5000 to:
+- View experiment runs
+- Compare model metrics
+- Visualize parameter relationships
+- Download model artifacts
+- Manage model versions
+
+## Configuration
+
+### config/config.yaml
+```yaml
+mlflow:
+  tracking_uri: "http://127.0.0.1:5000"
+  experiment_name: "Bank Churn Prediction"
+
+models:
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
+  
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+
+data:
+  test_size: 0.2
+  random_state: 42
+```
+
+## Screenshots
+
+### MLflow Home Page
+![MLflow Home Page](screenshots/MLflow_homepage.png)
+
+The MLflow tracking interface showing all experiment runs for the Bank Churn Prediction project.
+
+### Model Comparison
+![Model Comparison](screenshots/MLflow_comparing.png)
+
+Parallel coordinates plot comparing hyperparameters and metrics across Logistic Regression and Random Forest models.
+
+## Technologies Used
+
+### Core Technologies
+
+- **Python 3.11** - Programming language
+- **MLflow 2.x** - Experiment tracking and model registry
+- **scikit-learn** - Machine learning algorithms
+- **Flask** - REST API framework
+
+### Data Processing
+
+- **pandas** - Data manipulation and analysis
+- **numpy** - Numerical computing
+- **kagglehub** - Kaggle dataset integration
+
+### Model Evaluation
+
+- **scikit-learn metrics** - Model evaluation metrics
+- **matplotlib** - Visualization (optional)
+- **seaborn** - Statistical visualization (optional)
+
+## Dataset
+
+**Source**: Kaggle - Bank Churn Dataset
+
+**Features** (11 total after preprocessing):
+- CreditScore (continuous)
+- Age (continuous)
+- Tenure (continuous)
+- Balance (continuous)
+- NumOfProducts (discrete)
+- HasCrCard (binary)
+- IsActiveMember (binary)
+- EstimatedSalary (continuous)
+- Geography_Germany (binary, one-hot encoded)
+- Geography_Spain (binary, one-hot encoded)
+- Gender_Male (binary, one-hot encoded)
+
+**Target Variable**: Exited (0 = Stayed, 1 = Churned)
+
+## Testing
+
+Run the complete test suite:
+```bash
 pytest tests/
+```
 
-# Run specific test
-pytest tests/test_preprocessor.py
-\\\
+Run specific test categories:
+```bash
+# Unit tests
+pytest tests/unit/
 
-### Code Style
+# Integration tests
+pytest tests/integration/
 
-This project follows PEP 8 style guidelines.
-
-\\\ash
-# Check code style
-flake8 src/ scripts/
-
-# Format code
-black src/ scripts/
-\\\
-
-## Troubleshooting
-
-### Issue: Kaggle API Authentication Failed
-**Solution**: Ensure \kaggle.json\ is in the correct location with proper permissions.
-
-### Issue: MLflow Server Won't Start
-**Solution**: Check if port 5000 is already in use. Kill existing MLflow processes:
-
-\\\ash
-# Windows
-Get-Process | Where-Object {\$_.ProcessName -like "*mlflow*"} | Stop-Process -Force
-
-# Linux/Mac
-pkill -f mlflow
-\\\
-
-### Issue: Module Not Found
-**Solution**: Ensure virtual environment is activated and all dependencies are installed.
-
-## Future Enhancements
-
-- [ ] Add more models (XGBoost, LightGBM, Neural Networks)
-- [ ] Implement hyperparameter tuning with Optuna
-- [ ] Add model explainability with SHAP
-- [ ] Create REST API for model serving
-- [ ] Add automated model retraining pipeline
-- [ ] Implement A/B testing framework
+# API tests
+pytest tests/api/
+```
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome. Please follow these steps:
 
 1. Fork the repository
-2. Create a feature branch (\git checkout -b feature/AmazingFeature\)
-3. Commit your changes (\git commit -m 'Add some AmazingFeature'\)
-4. Push to the branch (\git push origin feature/AmazingFeature\)
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## License
@@ -273,16 +581,22 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Dataset provided by [Kaggle - Bank Churn Dataset](https://www.kaggle.com/datasets/harshitstark/bank-churn-train)
-- MLflow for experiment tracking framework
-- Scikit-learn for machine learning algorithms
+- Dataset provided by Kaggle community
+- MLflow documentation and examples
+- scikit-learn documentation
+- Flask framework documentation
 
 ## Contact
 
-**Author**: AD2000X
+Project Link: https://github.com/YOUR_USERNAME/MLflow_bank_churn
 
-**Project Link**: https://github.com/AD2000X/MLflow_bank_churn
+## Future Enhancements
 
----
-
-⭐ If you find this project helpful, please consider giving it a star!
+- [ ] Add XGBoost and LightGBM models
+- [ ] Implement SHAP values for model interpretability
+- [ ] Add monitoring and alerting for API
+- [ ] Implement authentication for API endpoints
+- [ ] Add Docker containerization
+- [ ] Create CI/CD pipeline with GitHub Actions
+- [ ] Add more comprehensive unit tests
+- [ ] Implement model performance monitoring dashboard
